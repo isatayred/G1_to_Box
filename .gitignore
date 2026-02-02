@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ROS / colcon
+build/
+install/
+log/
+
+# Mujoco / cache
+*.mjb
+*.h5
+*.npz
+.cache/
+.mujoco/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+/tmp/
+*.log

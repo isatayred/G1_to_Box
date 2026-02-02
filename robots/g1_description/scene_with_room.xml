@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<mujoco model="Unitree G1 with Room">
+  <include file="g1_23dof.xml" />
+  
+  <asset>
+    <material name="floor_material" rgba="1 1 1 1" specular="0" shininess="0" reflectance="0" />
+    <material name="wall_material" rgba="0.6 0.6 0.6 1" specular="0.2" shininess="0.05" />
+    <material name="obstacle_material" rgba="1 0 0 1" specular="0.6" shininess="0.2" />
+  </asset>
+  
+  <extension>
+  </extension>
+  
+  <option timestep="0.002" gravity="0 0 -9.81">
+    <flag warmstart="enable" />
+  </option>
+  
+  <default>
+    <geom conaffinity="1" condim="3" friction="2.5 0.01 0.0001" />
+    <joint damping="2.0" />
+  </default>
+  
+  <worldbody>
+    <!-- White floor inside the room (4m x 4m box) -->
+    <body name="floor">
+      <geom name="floor_white" type="box" size="2 2 0.05" pos="0 0 0" material="floor_material" rgba="1 1 1 1" friction="3.0 0.01 0.0001" condim="4" solimp="0.999 0.999 0.0001" solref="0.001 1" />
+    </body>
+    <!-- Room walls -->
+    <!-- Front wall -->
+    <body name="front_wall">
+      <geom name="front_wall_geom" type="box" size="2 0.15 2" pos="0 2 1" material="wall_material" friction="1" />
+    </body>
+    
+    <!-- Back wall -->
+    <body name="back_wall">
+      <geom name="back_wall_geom" type="box" size="2 0.15 2" pos="0 -2 1" material="wall_material" friction="1" />
+    </body>
+    
+    <!-- Left wall -->
+    <body name="left_wall">
+      <geom name="left_wall_geom" type="box" size="0.15 2 2" pos="-2 0 1" material="wall_material" friction="1" />
+    </body>
+    
+    <!-- Right wall -->
+    <body name="right_wall">
+      <geom name="right_wall_geom" type="box" size="0.15 2 2" pos="2 0 1" material="wall_material" friction="1" />
+    </body>
+    
+    <!-- Single obstacle box -->
+    <body name="obstacle_box">
+      <geom name="obstacle_geom" type="box" size="0.15 0.15 0.15" pos="0 0 0.15" material="obstacle_material" friction="0.8" />
+    </body>
+  </worldbody>
+  
+</mujoco>
